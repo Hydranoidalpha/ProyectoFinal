@@ -33,6 +33,9 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Alumno.findAll", query = "SELECT a FROM Alumno a")})
 public class Alumno implements Serializable {
 
+    @Column(name = "ci")
+    private Integer ci;
+
     @JoinTable(name = "alumno_detalle_caja", joinColumns = {
         @JoinColumn(name = "alumno", referencedColumnName = "idalumno")}, inverseJoinColumns = {
         @JoinColumn(name = "detalle_caja", referencedColumnName = "iddetalle_caja")})
@@ -50,8 +53,6 @@ public class Alumno implements Serializable {
     private String apellido;
     @Column(name = "direccion")
     private String direccion;
-    @Column(name = "ci")
-    private String ci;
     @Column(name = "fecha_nac")
     @Temporal(TemporalType.DATE)
     private Date fechaNac;
@@ -103,13 +104,6 @@ public class Alumno implements Serializable {
         this.direccion = direccion;
     }
 
-    public String getCi() {
-        return ci;
-    }
-
-    public void setCi(String ci) {
-        this.ci = ci;
-    }
 
     public Date getFechaNac() {
         return fechaNac;
@@ -182,6 +176,14 @@ public class Alumno implements Serializable {
 
     public void setDetalleCajaList(List<DetalleCaja> detalleCajaList) {
         this.detalleCajaList = detalleCajaList;
+    }
+
+    public Integer getCi() {
+        return ci;
+    }
+
+    public void setCi(Integer ci) {
+        this.ci = ci;
     }
     
 }

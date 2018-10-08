@@ -27,6 +27,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Encargado.findAll", query = "SELECT e FROM Encargado e")})
 public class Encargado implements Serializable {
 
+    @Column(name = "ci")
+    private Integer ci;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -38,8 +41,6 @@ public class Encargado implements Serializable {
     private String apellido;
     @Column(name = "direccion")
     private String direccion;
-    @Column(name = "ci")
-    private String ci;
     @Column(name = "telefono")
     private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "encargado")
@@ -84,13 +85,6 @@ public class Encargado implements Serializable {
         this.direccion = direccion;
     }
 
-    public String getCi() {
-        return ci;
-    }
-
-    public void setCi(String ci) {
-        this.ci = ci;
-    }
 
     public String getTelefono() {
         return telefono;
@@ -131,6 +125,14 @@ public class Encargado implements Serializable {
     @Override
     public String toString() {
         return "edu.snpp.proyectofinal.entidades.Encargado[ idencargado=" + idencargado + " ]";
+    }
+
+    public Integer getCi() {
+        return ci;
+    }
+
+    public void setCi(Integer ci) {
+        this.ci = ci;
     }
     
 }
