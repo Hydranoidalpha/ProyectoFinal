@@ -31,9 +31,6 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "DetalleCaja.findAll", query = "SELECT d FROM DetalleCaja d")})
 public class DetalleCaja implements Serializable {
 
-    @ManyToMany(mappedBy = "detalleCajaList")
-    private List<Alumno> alumnoList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -46,6 +43,8 @@ public class DetalleCaja implements Serializable {
     private Integer monto;
     @Column(name = "tipo_movimiento")
     private Boolean tipoMovimiento;
+    @ManyToMany(mappedBy = "detalleCajaList")
+    private List<Alumno> alumnoList;
     @JoinColumn(name = "caja", referencedColumnName = "idcaja")
     @ManyToOne(optional = false)
     private MovimientoCaja caja;
@@ -92,6 +91,14 @@ public class DetalleCaja implements Serializable {
         this.tipoMovimiento = tipoMovimiento;
     }
 
+    public List<Alumno> getAlumnoList() {
+        return alumnoList;
+    }
+
+    public void setAlumnoList(List<Alumno> alumnoList) {
+        this.alumnoList = alumnoList;
+    }
+
     public MovimientoCaja getCaja() {
         return caja;
     }
@@ -131,14 +138,6 @@ public class DetalleCaja implements Serializable {
     @Override
     public String toString() {
         return "edu.snpp.proyectofinal.entidades.DetalleCaja[ iddetalleCaja=" + iddetalleCaja + " ]";
-    }
-
-    public List<Alumno> getAlumnoList() {
-        return alumnoList;
-    }
-
-    public void setAlumnoList(List<Alumno> alumnoList) {
-        this.alumnoList = alumnoList;
     }
     
 }

@@ -37,6 +37,9 @@ public class Inscripcion implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    @Column(name = "anho_electivo")
+    @Temporal(TemporalType.DATE)
+    private Date anhoElectivo;
     @JoinColumn(name = "alumno", referencedColumnName = "idalumno")
     @ManyToOne(optional = false)
     private Alumno alumno;
@@ -65,6 +68,14 @@ public class Inscripcion implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public Date getAnhoElectivo() {
+        return anhoElectivo;
+    }
+
+    public void setAnhoElectivo(Date anhoElectivo) {
+        this.anhoElectivo = anhoElectivo;
     }
 
     public Alumno getAlumno() {

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import edu.snpp.proyectofinal.MainApp;
+import static edu.snpp.proyectofinal.MainApp.VENTANAPRINCIPAL;
 import edu.snpp.proyectofinal.entidades.Empleado;
 import java.io.IOException;
 import java.net.URL;
@@ -87,13 +88,14 @@ public class LoginController implements Initializable {
                 this.s.close();
                 FXMLLoader loader=new FXMLLoader();
                 try{
-                Parent vp = FXMLLoader.load(getClass().getResource("/fxml/VentanaPrincipal.fxml"));
+                Parent vp = loader.load(getClass().getResourceAsStream("/fxml/VentanaPrincipal.fxml"));
+                MainApp.VENTANAPRINCIPAL=loader.getController();
+                Stage st=new Stage();
                 Scene scene = new Scene(vp);
                 scene.getStylesheets().add("/styles/Styles.css");
-                Stage s= new Stage();
-                s.setTitle("JavaFX and Maven");
-                s.setScene(scene);
-                s.show();
+                st.setTitle("JavaFX and Maven");
+                st.setScene(scene);
+                st.show();
                 }
                 catch (IOException ex){
                     LOG.log(Level.SEVERE, "error al abrir página principal", ex);

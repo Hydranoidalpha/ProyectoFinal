@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="624.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.registroempleado.RegistroEmpleadoFXMLController">
+   <children>
+      <Label layoutX="139.0" layoutY="27.0" text="REGISTRO DE EMPLEADOS" textFill="#205183">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="119.0" text="Datos Personales:">
+         <font>
+            <Font name="Noto Sans CJK TC Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="nombre" layoutX="55.0" layoutY="168.0" prefHeight="26.0" prefWidth="247.0" promptText="Nombres" />
+      <JFXTextField fx:id="apellido" layoutX="55.0" layoutY="218.0" prefHeight="26.0" prefWidth="247.0" promptText="Apellidos" />
+      <JFXTextField fx:id="direc" layoutX="55.0" layoutY="268.0" prefHeight="26.0" prefWidth="247.0" promptText="Direccion" />
+      <JFXTextField fx:id="ci" layoutX="55.0" layoutY="312.0" prefHeight="26.0" prefWidth="200.0" promptText="Cédula de Identidad" />
+      <JFXTextField fx:id="tel" layoutX="55.0" layoutY="356.0" prefHeight="26.0" prefWidth="200.0" promptText="Teléfono" />
+      <JFXComboBox fx:id="carg" layoutX="60.0" layoutY="429.0" prefHeight="26.0" prefWidth="158.0" />
+      <JFXButton fx:id="guardar" buttonType="RAISED" layoutX="464.0" layoutY="551.0" onAction="#onActiononGuardar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Guardar" wrapText="true">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </JFXButton>
+      <TextField fx:id="idempleado" editable="false" layoutX="495.0" layoutY="168.0" prefHeight="26.0" prefWidth="41.0" />
+      <Label layoutX="464.0" layoutY="173.0" text="ID" />
+      <Label layoutX="63.0" layoutY="404.0" prefHeight="25.0" prefWidth="50.0" text="Cargo" />
+   </children>
+</AnchorPane>

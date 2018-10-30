@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="802.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.registroempleado.TablaEmpleadoFXMLController">
+   <children>
+      <Label layoutX="526.0" layoutY="39.0" text="Lista de Empleados" textFill="#205183">
+         <font>
+            <Font name="Noto Sans CJK TC Bold" size="26.0" />
+         </font>
+      </Label>
+      <TableView fx:id="lista" layoutX="62.0" layoutY="146.0" prefHeight="393.0" prefWidth="1270.0">
+        <columns>
+          <TableColumn fx:id="nombre" prefWidth="192.99996948242188" text="Nombre" />
+          <TableColumn fx:id="apellido" minWidth="0.0" prefWidth="180.0" text="Apellido" />
+            <TableColumn fx:id="direccion" prefWidth="347.0" text="Dirección" />
+            <TableColumn fx:id="ci" prefWidth="214.0" text="Cédula de Identidad" />
+            <TableColumn fx:id="tel" prefWidth="196.0" text="Teléfono" />
+            <TableColumn fx:id="cargo" prefWidth="139.0" text="Cargo" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="352.0" layoutY="557.0" onAction="#onActiononActualizar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Actualizar" wrapText="true">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="615.0" layoutY="557.0" onAction="#onActiononAgregar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Agregar" wrapText="true">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="839.0" layoutY="557.0" onAction="#onActiononModificar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Modificar" wrapText="true">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1028.0" layoutY="557.0" onAction="#onActiononEliminar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Eliminar" wrapText="true">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </JFXButton>
+      <JFXTextField fx:id="buscar" labelFloat="true" layoutX="164.0" layoutY="97.0" onKeyPressed="#onKeyPressedBuscar" prefHeight="26.0" prefWidth="362.0" />
+      <JFXButton buttonType="RAISED" layoutX="82.0" layoutY="97.0" onAction="#onActiononBuscar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Buscar" wrapText="true">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </JFXButton>
+   </children>
+</AnchorPane>

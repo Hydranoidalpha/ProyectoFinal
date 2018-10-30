@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,11 +31,9 @@ import javax.persistence.Table;
     @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e")})
 public class Empleado implements Serializable {
 
-    @Column(name = "ci")
-    private Integer ci;
-
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idempleado")
     private Integer idempleado;
@@ -43,6 +43,8 @@ public class Empleado implements Serializable {
     private String apellido;
     @Column(name = "direccion")
     private String direccion;
+    @Column(name = "ci")
+    private Integer ci;
     @Column(name = "telefono")
     private String telefono;
     @Column(name = "contrasena")
@@ -92,6 +94,13 @@ public class Empleado implements Serializable {
         this.direccion = direccion;
     }
 
+    public Integer getCi() {
+        return ci;
+    }
+
+    public void setCi(Integer ci) {
+        this.ci = ci;
+    }
 
     public String getTelefono() {
         return telefono;
@@ -148,14 +157,6 @@ public class Empleado implements Serializable {
     @Override
     public String toString() {
         return "edu.snpp.proyectofinal.entidades.Empleado[ idempleado=" + idempleado + " ]";
-    }
-
-    public Integer getCi() {
-        return ci;
-    }
-
-    public void setCi(Integer ci) {
-        this.ci = ci;
     }
     
 }

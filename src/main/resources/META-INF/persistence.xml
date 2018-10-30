@@ -13,6 +13,7 @@
     <class>edu.snpp.proyectofinal.entidades.Cargo</class>
     <class>edu.snpp.proyectofinal.entidades.MoviemientoAporte</class>
     <class>edu.snpp.proyectofinal.entidades.DetalleCaja</class>
+    <class>edu.snpp.proyectofinal.entidades.DetalleEncargado</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ProyectoFinal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

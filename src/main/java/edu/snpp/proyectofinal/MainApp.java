@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 
 public class MainApp extends Application {
+    
+    public static VentanaPrincipalController VENTANAPRINCIPAL;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -20,8 +22,10 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
         
+        
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 

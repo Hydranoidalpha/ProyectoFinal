@@ -33,15 +33,6 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Alumno.findAll", query = "SELECT a FROM Alumno a")})
 public class Alumno implements Serializable {
 
-    @Column(name = "ci")
-    private Integer ci;
-
-    @JoinTable(name = "alumno_detalle_caja", joinColumns = {
-        @JoinColumn(name = "alumno", referencedColumnName = "idalumno")}, inverseJoinColumns = {
-        @JoinColumn(name = "detalle_caja", referencedColumnName = "iddetalle_caja")})
-    @ManyToMany
-    private List<DetalleCaja> detalleCajaList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -53,17 +44,24 @@ public class Alumno implements Serializable {
     private String apellido;
     @Column(name = "direccion")
     private String direccion;
+    @Column(name = "ci")
+    private Integer ci;
     @Column(name = "fecha_nac")
     @Temporal(TemporalType.DATE)
     private Date fechaNac;
     @Column(name = "monto_aporte")
     private Integer montoAporte;
+    @JoinTable(name = "alumno_detalle_caja", joinColumns = {
+        @JoinColumn(name = "idalumno", referencedColumnName = "idalumno")}, inverseJoinColumns = {
+        @JoinColumn(name = "detalle_caja", referencedColumnName = "iddetalle_caja")})
+    @ManyToMany
+    private List<DetalleCaja> detalleCajaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
     private List<Inscripcion> inscripcionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
-    private List<ParentescoFamiliar> parentescoFamiliarList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
     private List<MoviemientoAporte> moviemientoAporteList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno1")
+    private List<DetalleEncargado> detalleEncargadoList;
 
     public Alumno() {
     }
@@ -104,6 +102,13 @@ public class Alumno implements Serializable {
         this.direccion = direccion;
     }
 
+    public Integer getCi() {
+        return ci;
+    }
+
+    public void setCi(Integer ci) {
+        this.ci = ci;
+    }
 
     public Date getFechaNac() {
         return fechaNac;
@@ -121,6 +126,14 @@ public class Alumno implements Serializable {
         this.montoAporte = montoAporte;
     }
 
+    public List<DetalleCaja> getDetalleCajaList() {
+        return detalleCajaList;
+    }
+
+    public void setDetalleCajaList(List<DetalleCaja> detalleCajaList) {
+        this.detalleCajaList = detalleCajaList;
+    }
+
     public List<Inscripcion> getInscripcionList() {
         return inscripcionList;
     }
@@ -129,20 +142,20 @@ public class Alumno implements Serializable {
         this.inscripcionList = inscripcionList;
     }
 
-    public List<ParentescoFamiliar> getParentescoFamiliarList() {
-        return parentescoFamiliarList;
-    }
-
-    public void setParentescoFamiliarList(List<ParentescoFamiliar> parentescoFamiliarList) {
-        this.parentescoFamiliarList = parentescoFamiliarList;
-    }
-
     public List<MoviemientoAporte> getMoviemientoAporteList() {
         return moviemientoAporteList;
     }
 
     public void setMoviemientoAporteList(List<MoviemientoAporte> moviemientoAporteList) {
         this.moviemientoAporteList = moviemientoAporteList;
+    }
+
+    public List<DetalleEncargado> getDetalleEncargadoList() {
+        return detalleEncargadoList;
+    }
+
+    public void setDetalleEncargadoList(List<DetalleEncargado> detalleEncargadoList) {
+        this.detalleEncargadoList = detalleEncargadoList;
     }
 
     @Override
@@ -168,22 +181,6 @@ public class Alumno implements Serializable {
     @Override
     public String toString() {
         return "edu.snpp.proyectofinal.entidades.Alumno[ idalumno=" + idalumno + " ]";
-    }
-
-    public List<DetalleCaja> getDetalleCajaList() {
-        return detalleCajaList;
-    }
-
-    public void setDetalleCajaList(List<DetalleCaja> detalleCajaList) {
-        this.detalleCajaList = detalleCajaList;
-    }
-
-    public Integer getCi() {
-        return ci;
-    }
-
-    public void setCi(Integer ci) {
-        this.ci = ci;
     }
     
 }

@@ -27,9 +27,6 @@ import javax.persistence.Table;
     @NamedQuery(name = "Encargado.findAll", query = "SELECT e FROM Encargado e")})
 public class Encargado implements Serializable {
 
-    @Column(name = "ci")
-    private Integer ci;
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -41,10 +38,12 @@ public class Encargado implements Serializable {
     private String apellido;
     @Column(name = "direccion")
     private String direccion;
+    @Column(name = "ci")
+    private Integer ci;
     @Column(name = "telefono")
     private String telefono;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "encargado")
-    private List<ParentescoFamiliar> parentescoFamiliarList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "encargado1")
+    private List<DetalleEncargado> detalleEncargadoList;
 
     public Encargado() {
     }
@@ -85,6 +84,13 @@ public class Encargado implements Serializable {
         this.direccion = direccion;
     }
 
+    public Integer getCi() {
+        return ci;
+    }
+
+    public void setCi(Integer ci) {
+        this.ci = ci;
+    }
 
     public String getTelefono() {
         return telefono;
@@ -94,12 +100,12 @@ public class Encargado implements Serializable {
         this.telefono = telefono;
     }
 
-    public List<ParentescoFamiliar> getParentescoFamiliarList() {
-        return parentescoFamiliarList;
+    public List<DetalleEncargado> getDetalleEncargadoList() {
+        return detalleEncargadoList;
     }
 
-    public void setParentescoFamiliarList(List<ParentescoFamiliar> parentescoFamiliarList) {
-        this.parentescoFamiliarList = parentescoFamiliarList;
+    public void setDetalleEncargadoList(List<DetalleEncargado> detalleEncargadoList) {
+        this.detalleEncargadoList = detalleEncargadoList;
     }
 
     @Override
@@ -125,14 +131,6 @@ public class Encargado implements Serializable {
     @Override
     public String toString() {
         return "edu.snpp.proyectofinal.entidades.Encargado[ idencargado=" + idencargado + " ]";
-    }
-
-    public Integer getCi() {
-        return ci;
-    }
-
-    public void setCi(Integer ci) {
-        this.ci = ci;
     }
     
 }
