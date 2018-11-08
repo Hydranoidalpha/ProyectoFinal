@@ -57,7 +57,7 @@ public class VentanaPrincipalController implements Initializable {
         if (!yaAbierto) {
             try {
                 FXMLLoader loader = new FXMLLoader();
-                AnchorPane root = FXMLLoader.load(getClass().getResource(direccionFXML));
+                AnchorPane root = loader.load(getClass().getResourceAsStream(direccionFXML));
                 Tab t = new Tab();
                 t.setText(tituloPestania);
                 t.setContent(root);
