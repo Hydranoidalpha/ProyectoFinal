@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1012.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.movimientoaporte.MovimientoAporteFXMLController">
+   <children>
+      <Label layoutX="287.0" layoutY="30.0" text="MOVIMIENTO APORTE" textFill="#205183">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="alumno" layoutX="54.0" layoutY="85.0" onAction="#OnActionBuscar" promptText="Alumno" AnchorPane.topAnchor="85.0" />
+      <TableView fx:id="tabla" layoutX="47.0" layoutY="154.0" prefHeight="405.0" prefWidth="856.0" AnchorPane.topAnchor="154.0">
+        <columns>
+          <TableColumn fx:id="colum" prefWidth="59.0" />
+          <TableColumn fx:id="aporte" prefWidth="310.0" text="Aportes" />
+            <TableColumn fx:id="fechaven" prefWidth="282.0" text="Fecha de Vencimiento" />
+            <TableColumn fx:id="monto" prefWidth="204.0" text="Monto" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="informe" buttonType="RAISED" layoutX="256.0" layoutY="601.0" onAction="#onActiononImprimirInforme" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Imprimir Informe" wrapText="true">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </JFXButton>
+      <JFXButton fx:id="guardar1" buttonType="RAISED" layoutX="578.0" layoutY="601.0" onAction="#onActiononSalir" prefHeight="26.0" prefWidth="78.0" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Salir" wrapText="true">
+         <effect>
+            <Shadow height="0.0" radius="0.0" width="0.0" />
+         </effect>
+      </JFXButton>
+   </children>
+</AnchorPane>

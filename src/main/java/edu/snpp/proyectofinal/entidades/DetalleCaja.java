@@ -7,13 +7,11 @@ package edu.snpp.proyectofinal.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -43,8 +41,9 @@ public class DetalleCaja implements Serializable {
     private Integer monto;
     @Column(name = "tipo_movimiento")
     private Boolean tipoMovimiento;
-    @ManyToMany(mappedBy = "detalleCajaList")
-    private List<Alumno> alumnoList;
+    @JoinColumn(name = "alumno", referencedColumnName = "idalumno")
+    @ManyToOne(optional = false)
+    private Alumno alumno;
     @JoinColumn(name = "caja", referencedColumnName = "idcaja")
     @ManyToOne(optional = false)
     private MovimientoCaja caja;
@@ -91,12 +90,12 @@ public class DetalleCaja implements Serializable {
         this.tipoMovimiento = tipoMovimiento;
     }
 
-    public List<Alumno> getAlumnoList() {
-        return alumnoList;
+    public Alumno getAlumno() {
+        return alumno;
     }
 
-    public void setAlumnoList(List<Alumno> alumnoList) {
-        this.alumnoList = alumnoList;
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
     public MovimientoCaja getCaja() {

@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,13 +26,14 @@ import javax.persistence.TemporalType;
  * @author fredybogado
  */
 @Entity
-@Table(name = "moviemiento_aporte")
+@Table(name = "movimiento_aporte")
 @NamedQueries({
-    @NamedQuery(name = "MoviemientoAporte.findAll", query = "SELECT m FROM MoviemientoAporte m")})
-public class MoviemientoAporte implements Serializable {
+    @NamedQuery(name = "MovimientoAporte.findAll", query = "SELECT m FROM MovimientoAporte m")})
+public class MovimientoAporte implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idmoviemiento_aporte")
     private Integer idmoviemientoAporte;
@@ -46,14 +49,16 @@ public class MoviemientoAporte implements Serializable {
     private Boolean pendiente;
     @Column(name = "mes")
     private Integer mes;
+    @Column(name = "anho")
+    private Integer anho;
     @JoinColumn(name = "alumno", referencedColumnName = "idalumno")
     @ManyToOne(optional = false)
     private Alumno alumno;
 
-    public MoviemientoAporte() {
+    public MovimientoAporte() {
     }
 
-    public MoviemientoAporte(Integer idmoviemientoAporte) {
+    public MovimientoAporte(Integer idmoviemientoAporte) {
         this.idmoviemientoAporte = idmoviemientoAporte;
     }
 
@@ -105,6 +110,14 @@ public class MoviemientoAporte implements Serializable {
         this.mes = mes;
     }
 
+    public Integer getAnho() {
+        return anho;
+    }
+
+    public void setAnho(Integer anho) {
+        this.anho = anho;
+    }
+
     public Alumno getAlumno() {
         return alumno;
     }
@@ -123,10 +136,10 @@ public class MoviemientoAporte implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MoviemientoAporte)) {
+        if (!(object instanceof MovimientoAporte)) {
             return false;
         }
-        MoviemientoAporte other = (MoviemientoAporte) object;
+        MovimientoAporte other = (MovimientoAporte) object;
         if ((this.idmoviemientoAporte == null && other.idmoviemientoAporte != null) || (this.idmoviemientoAporte != null && !this.idmoviemientoAporte.equals(other.idmoviemientoAporte))) {
             return false;
         }
@@ -135,7 +148,7 @@ public class MoviemientoAporte implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.snpp.proyectofinal.entidades.MoviemientoAporte[ idmoviemientoAporte=" + idmoviemientoAporte + " ]";
+        return "edu.snpp.proyectofinal.entidades.MovimientoAporte[ idmoviemientoAporte=" + idmoviemientoAporte + " ]";
     }
     
 }

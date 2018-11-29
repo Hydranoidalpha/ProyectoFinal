@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -80,14 +81,23 @@ public class ModificarCuentaFXMLController implements Initializable {
                 Empleado e = rConsulta.get(0);
                 String contrasenha = this.toSHA256(conactual.getText());
 
-                if (this.toSHA256(e.getContrasena()).equals(contrasenha)) {
-
+                if ((e.getContrasena()).equals(contrasenha)) {
+                        
                     if (this.connueva.getText().equals(verificarcon.getText())) {
-                        String c = connueva.getText();
+                        
+                        String c = this.toSHA256(connueva.getText());
                         e.setContrasena(c);
                         em.getTransaction().begin();
                         em.merge(e);
                         em.getTransaction().commit();
+                        conactual.clear();
+                        connueva.clear();
+                        verificarcon.clear();
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Información");
+                        alert.setHeaderText("Contraseña");
+                        alert.setContentText("La Contraseña a sido modificada");
+                        alert.showAndWait();
                     }
                     else
                     {

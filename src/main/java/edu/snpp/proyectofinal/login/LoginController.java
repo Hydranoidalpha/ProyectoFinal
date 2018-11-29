@@ -84,7 +84,7 @@ public class LoginController implements Initializable {
             Empleado e= rConsulta.get(0);
             String contrasenha = this.toSHA256(contrasena.getText());
             
-            if (this.toSHA256(e.getContrasena()).equals(contrasenha)) {
+            if(e.getContrasena().equals(contrasenha)) {
                 this.s.close();
                 FXMLLoader loader=new FXMLLoader();
                 try{

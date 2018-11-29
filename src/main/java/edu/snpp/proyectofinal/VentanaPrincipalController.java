@@ -80,4 +80,9 @@ public class VentanaPrincipalController implements Initializable {
         this.cargarModulo("/fxml/registroempleado/TablaEmpleadoFXML.fxml", "Tabla Empleado");
     }
 
+    @FXML
+    private void OnActiononGenerarCobro(ActionEvent event) {
+        this.cargarModulo("/fxml/generarcobrodeaportes/generarcobrodeaportesFXML.fxml", "Generar Cobro de Aportes");
+    }
+
 }

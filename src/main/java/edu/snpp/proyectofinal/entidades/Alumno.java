@@ -13,9 +13,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -51,15 +48,14 @@ public class Alumno implements Serializable {
     private Date fechaNac;
     @Column(name = "monto_aporte")
     private Integer montoAporte;
-    @JoinTable(name = "alumno_detalle_caja", joinColumns = {
-        @JoinColumn(name = "idalumno", referencedColumnName = "idalumno")}, inverseJoinColumns = {
-        @JoinColumn(name = "detalle_caja", referencedColumnName = "iddetalle_caja")})
-    @ManyToMany
-    private List<DetalleCaja> detalleCajaList;
+    @Column(name = "activo")
+    private Boolean activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
     private List<Inscripcion> inscripcionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
-    private List<MoviemientoAporte> moviemientoAporteList;
+    private List<DetalleCaja> detalleCajaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
+    private List<MovimientoAporte> movimientoAporteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno1")
     private List<DetalleEncargado> detalleEncargadoList;
 
@@ -126,12 +122,12 @@ public class Alumno implements Serializable {
         this.montoAporte = montoAporte;
     }
 
-    public List<DetalleCaja> getDetalleCajaList() {
-        return detalleCajaList;
+    public Boolean getActivo() {
+        return activo;
     }
 
-    public void setDetalleCajaList(List<DetalleCaja> detalleCajaList) {
-        this.detalleCajaList = detalleCajaList;
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     public List<Inscripcion> getInscripcionList() {
@@ -142,12 +138,20 @@ public class Alumno implements Serializable {
         this.inscripcionList = inscripcionList;
     }
 
-    public List<MoviemientoAporte> getMoviemientoAporteList() {
-        return moviemientoAporteList;
+    public List<DetalleCaja> getDetalleCajaList() {
+        return detalleCajaList;
     }
 
-    public void setMoviemientoAporteList(List<MoviemientoAporte> moviemientoAporteList) {
-        this.moviemientoAporteList = moviemientoAporteList;
+    public void setDetalleCajaList(List<DetalleCaja> detalleCajaList) {
+        this.detalleCajaList = detalleCajaList;
+    }
+
+    public List<MovimientoAporte> getMovimientoAporteList() {
+        return movimientoAporteList;
+    }
+
+    public void setMovimientoAporteList(List<MovimientoAporte> movimientoAporteList) {
+        this.movimientoAporteList = movimientoAporteList;
     }
 
     public List<DetalleEncargado> getDetalleEncargadoList() {

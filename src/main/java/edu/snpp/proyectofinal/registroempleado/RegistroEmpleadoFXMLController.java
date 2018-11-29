@@ -104,4 +104,6 @@ public class RegistroEmpleadoFXMLController implements Initializable {
       emp= true;
     }
 
+    
+    
 }
