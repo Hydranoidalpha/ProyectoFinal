@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -35,16 +36,16 @@ public class MovimientoAporte implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idmoviemiento_aporte")
-    private Integer idmoviemientoAporte;
-    @Column(name = "fecha_pago")
+    @Column(name = "idmoviemientoaporte")
+    private Integer idmoviemientoaporte;
+    @Column(name = "fechapago")
     @Temporal(TemporalType.DATE)
-    private Date fechaPago;
+    private Date fechapago;
     @Column(name = "monto")
     private Integer monto;
-    @Column(name = "fecha_vencimiento")
+    @Column(name = "fechavencimiento")
     @Temporal(TemporalType.DATE)
-    private Date fechaVencimiento;
+    private Date fechavencimiento;
     @Column(name = "pendiente")
     private Boolean pendiente;
     @Column(name = "mes")
@@ -54,28 +55,40 @@ public class MovimientoAporte implements Serializable {
     @JoinColumn(name = "alumno", referencedColumnName = "idalumno")
     @ManyToOne(optional = false)
     private Alumno alumno;
+    @JoinColumn(name = "detallecaja", referencedColumnName = "iddetallecaja")
+    @ManyToOne
+    private DetalleCaja detallecaja;
 
     public MovimientoAporte() {
     }
 
-    public MovimientoAporte(Integer idmoviemientoAporte) {
-        this.idmoviemientoAporte = idmoviemientoAporte;
+    @Transient
+    private Boolean pagar = false;
+    public Boolean isPagar() {
+        return pagar;
     }
 
-    public Integer getIdmoviemientoAporte() {
-        return idmoviemientoAporte;
+    public void setPagar(Boolean pagar) {
+        this.pagar = pagar;
+    }
+    public MovimientoAporte(Integer idmoviemientoaporte) {
+        this.idmoviemientoaporte = idmoviemientoaporte;
     }
 
-    public void setIdmoviemientoAporte(Integer idmoviemientoAporte) {
-        this.idmoviemientoAporte = idmoviemientoAporte;
+    public Integer getIdmoviemientoaporte() {
+        return idmoviemientoaporte;
     }
 
-    public Date getFechaPago() {
-        return fechaPago;
+    public void setIdmoviemientoaporte(Integer idmoviemientoaporte) {
+        this.idmoviemientoaporte = idmoviemientoaporte;
     }
 
-    public void setFechaPago(Date fechaPago) {
-        this.fechaPago = fechaPago;
+    public Date getFechapago() {
+        return fechapago;
+    }
+
+    public void setFechapago(Date fechapago) {
+        this.fechapago = fechapago;
     }
 
     public Integer getMonto() {
@@ -86,12 +99,12 @@ public class MovimientoAporte implements Serializable {
         this.monto = monto;
     }
 
-    public Date getFechaVencimiento() {
-        return fechaVencimiento;
+    public Date getFechavencimiento() {
+        return fechavencimiento;
     }
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
+    public void setFechavencimiento(Date fechavencimiento) {
+        this.fechavencimiento = fechavencimiento;
     }
 
     public Boolean getPendiente() {
@@ -126,10 +139,18 @@ public class MovimientoAporte implements Serializable {
         this.alumno = alumno;
     }
 
+    public DetalleCaja getDetallecaja() {
+        return detallecaja;
+    }
+
+    public void setDetallecaja(DetalleCaja detallecaja) {
+        this.detallecaja = detallecaja;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idmoviemientoAporte != null ? idmoviemientoAporte.hashCode() : 0);
+        hash += (idmoviemientoaporte != null ? idmoviemientoaporte.hashCode() : 0);
         return hash;
     }
 
@@ -140,7 +161,7 @@ public class MovimientoAporte implements Serializable {
             return false;
         }
         MovimientoAporte other = (MovimientoAporte) object;
-        if ((this.idmoviemientoAporte == null && other.idmoviemientoAporte != null) || (this.idmoviemientoAporte != null && !this.idmoviemientoAporte.equals(other.idmoviemientoAporte))) {
+        if ((this.idmoviemientoaporte == null && other.idmoviemientoaporte != null) || (this.idmoviemientoaporte != null && !this.idmoviemientoaporte.equals(other.idmoviemientoaporte))) {
             return false;
         }
         return true;
@@ -148,7 +169,7 @@ public class MovimientoAporte implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.snpp.proyectofinal.entidades.MovimientoAporte[ idmoviemientoAporte=" + idmoviemientoAporte + " ]";
+        return "edu.snpp.proyectofinal.entidades.MovimientoAporte[ idmoviemientoaporte=" + idmoviemientoaporte + " ]";
     }
     
 }

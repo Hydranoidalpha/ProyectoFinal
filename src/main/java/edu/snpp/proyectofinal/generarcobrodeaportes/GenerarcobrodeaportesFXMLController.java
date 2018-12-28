@@ -38,8 +38,10 @@ import javax.persistence.TypedQuery;
  * @author fredybogado
  */
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 public class GenerarcobrodeaportesFXMLController implements Initializable {
 
+    
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_proyectofinal_jar_1.0-SNAPSHOTPU");
     @FXML
     private JFXCheckBox check1;
@@ -59,6 +61,10 @@ public class GenerarcobrodeaportesFXMLController implements Initializable {
     private JFXComboBox<Integer> desdeanho;
     @FXML
     private JFXComboBox<Integer> hastaanho;
+    private Stage s;
+    public void setS(Stage s) {
+        this.s = s;
+    }
 
     /**
      * Initializes the controller class.
@@ -114,15 +120,23 @@ public class GenerarcobrodeaportesFXMLController implements Initializable {
         for (Alumno al : lst) {
                Calendar cDesde = new GregorianCalendar(desdeanho.getValue(), this.convertirmes(this.desdemes.getValue()) - 1, 1);
                Calendar cHasta = new GregorianCalendar(this.hastaanho.getValue(), this.convertirmes(this.hastames.getValue()) - 1, 1);
+               
+               Calendar cVencimiento = new GregorianCalendar(desdeanho.getValue(), this.convertirmes(this.desdemes.getValue()) - 1, 26);
+               
             while (cDesde.before(cHasta) || cDesde.equals(cHasta)) {
                 
                 if (cDesde.get(Calendar.MONTH) != Calendar.DECEMBER && cDesde.get(Calendar.MONTH) != Calendar.JANUARY) {
                     int mes= cDesde.get(Calendar.MONTH) + 1;
                     int anho= cDesde.get(Calendar.YEAR);
+                    
+                    cVencimiento = new GregorianCalendar(anho, mes-1, 26);
+                    
                     if(!this.verificarpendiente(al, mes, anho))
                     {
                     MovimientoAporte ma = new MovimientoAporte();
                     ma.setAlumno(al);
+                    ma.setMonto(al.getMontoaporte());
+                    ma.setFechavencimiento(cVencimiento.getTime());
                     ma.setMes(mes);
                     ma.setPendiente(true);
                     ma.setAnho(anho);
@@ -143,13 +157,13 @@ public class GenerarcobrodeaportesFXMLController implements Initializable {
 
     @FXML
     private void onActiononCerrar(ActionEvent event) {
-        Alert s= new Alert(AlertType.CONFIRMATION);
-        s.setTitle("Salir");
-        s.setHeaderText("¿Realmente desea salir?");
-        Optional<ButtonType> result = s.showAndWait();
+        Alert a= new Alert(AlertType.CONFIRMATION);
+        a.setTitle("Salir");
+        a.setHeaderText("¿Realmente desea salir?");
+        Optional<ButtonType> result = a.showAndWait();
             if (result.get() == ButtonType.OK)
             {
-                System.exit(0);
+                this.s.close();
             } 
             else 
             {
@@ -245,7 +259,7 @@ public class GenerarcobrodeaportesFXMLController implements Initializable {
 
     private List<Alumno> cargaralu() {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Alumno> q = em.createQuery("SELECT tm FROM Alumno tm WHERE tm.activo=1", Alumno.class);
+        TypedQuery<Alumno> q = em.createQuery("SELECT tm FROM Alumno tm WHERE tm.activo=true", Alumno.class);
         return q.getResultList();
     }
     private boolean verificarpendiente(Alumno a, int Mes,int Anho) {

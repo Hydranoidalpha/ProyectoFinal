@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -34,20 +36,23 @@ public class MovimientoCaja implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idcaja")
     private Integer idcaja;
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @Column(name = "apertura_caja")
-    private Integer aperturaCaja;
-    @Column(name = "cierre_caja")
-    private Integer cierreCaja;
-    @Column(name = "total_entrada")
-    private Integer totalEntrada;
-    @Column(name = "total_salida")
-    private Integer totalSalida;
+    @Column(name = "aperturacaja")
+    private Integer aperturacaja;
+    @Column(name = "cierrecaja")
+    private Integer cierrecaja;
+    @Column(name = "totalentrada")
+    private Integer totalentrada;
+    @Column(name = "totalsalida")
+    private Integer totalsalida;
+    @Column(name = "habilitado")
+    private Boolean habilitado;
     @JoinColumn(name = "empleado", referencedColumnName = "idempleado")
     @ManyToOne(optional = false)
     private Empleado empleado;
@@ -77,36 +82,44 @@ public class MovimientoCaja implements Serializable {
         this.fecha = fecha;
     }
 
-    public Integer getAperturaCaja() {
-        return aperturaCaja;
+    public Integer getAperturacaja() {
+        return aperturacaja;
     }
 
-    public void setAperturaCaja(Integer aperturaCaja) {
-        this.aperturaCaja = aperturaCaja;
+    public void setAperturacaja(Integer aperturacaja) {
+        this.aperturacaja = aperturacaja;
     }
 
-    public Integer getCierreCaja() {
-        return cierreCaja;
+    public Integer getCierrecaja() {
+        return cierrecaja;
     }
 
-    public void setCierreCaja(Integer cierreCaja) {
-        this.cierreCaja = cierreCaja;
+    public void setCierrecaja(Integer cierrecaja) {
+        this.cierrecaja = cierrecaja;
     }
 
-    public Integer getTotalEntrada() {
-        return totalEntrada;
+    public Integer getTotalentrada() {
+        return totalentrada;
     }
 
-    public void setTotalEntrada(Integer totalEntrada) {
-        this.totalEntrada = totalEntrada;
+    public void setTotalentrada(Integer totalentrada) {
+        this.totalentrada = totalentrada;
     }
 
-    public Integer getTotalSalida() {
-        return totalSalida;
+    public Integer getTotalsalida() {
+        return totalsalida;
     }
 
-    public void setTotalSalida(Integer totalSalida) {
-        this.totalSalida = totalSalida;
+    public void setTotalsalida(Integer totalsalida) {
+        this.totalsalida = totalsalida;
+    }
+
+    public Boolean getHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(Boolean habilitado) {
+        this.habilitado = habilitado;
     }
 
     public Empleado getEmpleado() {

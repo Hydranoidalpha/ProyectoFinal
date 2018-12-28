@@ -33,7 +33,7 @@ public class DetalleEncargado implements Serializable {
     @JoinColumn(name = "encargado", referencedColumnName = "idencargado", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Encargado encargado1;
-    @JoinColumn(name = "parentesco", referencedColumnName = "idparentesco_familiar", insertable = false, updatable = false)
+    @JoinColumn(name = "parentesco", referencedColumnName = "idparentescofamiliar", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private ParentescoFamiliar parentescoFamiliar;
 

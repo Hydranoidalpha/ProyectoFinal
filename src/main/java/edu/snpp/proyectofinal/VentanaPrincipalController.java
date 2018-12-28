@@ -85,4 +85,19 @@ public class VentanaPrincipalController implements Initializable {
         this.cargarModulo("/fxml/generarcobrodeaportes/generarcobrodeaportesFXML.fxml", "Generar Cobro de Aportes");
     }
 
+    @FXML
+    private void OnActiononRegistrarCobro(ActionEvent event) {
+        this.cargarModulo("/fxml/cobrodeaportes/cobrodeaportesFXML.fxml", "Cobro de Aportes");
+    }
+
+    @FXML
+    private void OnActiononAperturaCaja(ActionEvent event) {
+        this.cargarModulo("/fxml/aperturacaja/AperturaCaja.fxml", "Apetura/Cierre de Caja");
+    }
+
+    @FXML
+    private void OnActiononAnularRecibo(ActionEvent event) {
+        this.cargarModulo("/fxml/anularrecibo/anularrecibo.fxml", "Anular Recibo");
+    }
+
 }

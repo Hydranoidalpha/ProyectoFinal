@@ -18,12 +18,12 @@
       </Label>
       <JFXCheckBox fx:id="check1" layoutX="66.0" layoutY="100.0" onAction="#OnActionOnGenerarparatodos" text="Generar para todos los alumnos" />
       <JFXTextField fx:id="alumno" layoutX="66.0" layoutY="142.0" prefHeight="26.0" prefWidth="235.0" promptText="Alumno" />
-      <JFXButton fx:id="informe" buttonType="RAISED" layoutX="429.0" layoutY="428.0" onAction="#onActiononGenerar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Generar" wrapText="true">
+      <JFXButton buttonType="RAISED" layoutX="429.0" layoutY="428.0" onAction="#onActiononGenerar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Generar" wrapText="true">
          <effect>
             <Shadow height="0.0" radius="0.0" width="0.0" />
          </effect>
       </JFXButton>
-      <JFXButton fx:id="informe1" buttonType="RAISED" layoutX="568.0" layoutY="428.0" onAction="#onActiononCerrar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Cerrar" wrapText="true">
+      <JFXButton buttonType="RAISED" layoutX="568.0" layoutY="428.0" onAction="#onActiononCerrar" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Cerrar" wrapText="true">
          <effect>
             <Shadow height="0.0" radius="0.0" width="0.0" />
          </effect>

@@ -30,8 +30,8 @@ public class ParentescoFamiliar implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "idparentesco_familiar")
-    private Integer idparentescoFamiliar;
+    @Column(name = "idparentescofamiliar")
+    private Integer idparentescofamiliar;
     @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "parentescoFamiliar")
@@ -40,16 +40,16 @@ public class ParentescoFamiliar implements Serializable {
     public ParentescoFamiliar() {
     }
 
-    public ParentescoFamiliar(Integer idparentescoFamiliar) {
-        this.idparentescoFamiliar = idparentescoFamiliar;
+    public ParentescoFamiliar(Integer idparentescofamiliar) {
+        this.idparentescofamiliar = idparentescofamiliar;
     }
 
-    public Integer getIdparentescoFamiliar() {
-        return idparentescoFamiliar;
+    public Integer getIdparentescofamiliar() {
+        return idparentescofamiliar;
     }
 
-    public void setIdparentescoFamiliar(Integer idparentescoFamiliar) {
-        this.idparentescoFamiliar = idparentescoFamiliar;
+    public void setIdparentescofamiliar(Integer idparentescofamiliar) {
+        this.idparentescofamiliar = idparentescofamiliar;
     }
 
     public String getDescripcion() {
@@ -71,7 +71,7 @@ public class ParentescoFamiliar implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idparentescoFamiliar != null ? idparentescoFamiliar.hashCode() : 0);
+        hash += (idparentescofamiliar != null ? idparentescofamiliar.hashCode() : 0);
         return hash;
     }
 
@@ -82,7 +82,7 @@ public class ParentescoFamiliar implements Serializable {
             return false;
         }
         ParentescoFamiliar other = (ParentescoFamiliar) object;
-        if ((this.idparentescoFamiliar == null && other.idparentescoFamiliar != null) || (this.idparentescoFamiliar != null && !this.idparentescoFamiliar.equals(other.idparentescoFamiliar))) {
+        if ((this.idparentescofamiliar == null && other.idparentescofamiliar != null) || (this.idparentescofamiliar != null && !this.idparentescofamiliar.equals(other.idparentescofamiliar))) {
             return false;
         }
         return true;
@@ -90,7 +90,7 @@ public class ParentescoFamiliar implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.snpp.proyectofinal.entidades.ParentescoFamiliar[ idparentescoFamiliar=" + idparentescoFamiliar + " ]";
+        return "edu.snpp.proyectofinal.entidades.ParentescoFamiliar[ idparentescofamiliar=" + idparentescofamiliar + " ]";
     }
     
 }

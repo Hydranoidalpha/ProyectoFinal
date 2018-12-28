@@ -57,6 +57,7 @@ public class LoginController implements Initializable {
     public void setS(Stage s) {
         this.s = s;
     }
+    public static Empleado EMPLEADO;
     
     
     
@@ -85,6 +86,7 @@ public class LoginController implements Initializable {
             String contrasenha = this.toSHA256(contrasena.getText());
             
             if(e.getContrasena().equals(contrasenha)) {
+                LoginController.EMPLEADO=e;
                 this.s.close();
                 FXMLLoader loader=new FXMLLoader();
                 try{

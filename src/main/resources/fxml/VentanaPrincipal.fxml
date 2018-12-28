@@ -12,18 +12,28 @@
    <children>
       <MenuBar layoutX="-6.0" prefHeight="803.0" prefWidth="1256.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Archivos">
+          <Menu mnemonicParsing="false" text="Registrar">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#OnActiononRegistrarEmpleado" text="Registrar Empleado" />
-                  <MenuItem mnemonicParsing="false" onAction="#OnActiononGenerarCobro" text="Generar Cobro de Alumnos" />
+                  <MenuItem mnemonicParsing="false" onAction="#OnActiononRegistrarCobro" text="Registrar Cobro de Aportes" />
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Editar">
+          <Menu mnemonicParsing="false" text="Cobro de Aportes">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#OnActiononGenerarCobro" text="Generar Cobro de Alumnos" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Apertura/Cierre de Caja">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#OnActiononAperturaCaja" text="Apertura/Cierre de Caja" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Anular Recibo">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#OnActiononAnularRecibo" text="Anular Recibo" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Ayuda">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />

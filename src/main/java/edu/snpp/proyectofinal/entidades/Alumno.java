@@ -43,17 +43,15 @@ public class Alumno implements Serializable {
     private String direccion;
     @Column(name = "ci")
     private Integer ci;
-    @Column(name = "fecha_nac")
+    @Column(name = "fechanac")
     @Temporal(TemporalType.DATE)
-    private Date fechaNac;
-    @Column(name = "monto_aporte")
-    private Integer montoAporte;
+    private Date fechanac;
+    @Column(name = "montoaporte")
+    private Integer montoaporte;
     @Column(name = "activo")
     private Boolean activo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
     private List<Inscripcion> inscripcionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
-    private List<DetalleCaja> detalleCajaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno")
     private List<MovimientoAporte> movimientoAporteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno1")
@@ -106,20 +104,20 @@ public class Alumno implements Serializable {
         this.ci = ci;
     }
 
-    public Date getFechaNac() {
-        return fechaNac;
+    public Date getFechanac() {
+        return fechanac;
     }
 
-    public void setFechaNac(Date fechaNac) {
-        this.fechaNac = fechaNac;
+    public void setFechanac(Date fechanac) {
+        this.fechanac = fechanac;
     }
 
-    public Integer getMontoAporte() {
-        return montoAporte;
+    public Integer getMontoaporte() {
+        return montoaporte;
     }
 
-    public void setMontoAporte(Integer montoAporte) {
-        this.montoAporte = montoAporte;
+    public void setMontoaporte(Integer montoaporte) {
+        this.montoaporte = montoaporte;
     }
 
     public Boolean getActivo() {
@@ -136,14 +134,6 @@ public class Alumno implements Serializable {
 
     public void setInscripcionList(List<Inscripcion> inscripcionList) {
         this.inscripcionList = inscripcionList;
-    }
-
-    public List<DetalleCaja> getDetalleCajaList() {
-        return detalleCajaList;
-    }
-
-    public void setDetalleCajaList(List<DetalleCaja> detalleCajaList) {
-        this.detalleCajaList = detalleCajaList;
     }
 
     public List<MovimientoAporte> getMovimientoAporteList() {

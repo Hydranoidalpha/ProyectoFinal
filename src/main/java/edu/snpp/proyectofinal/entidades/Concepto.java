@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -29,6 +31,7 @@ public class Concepto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idconcepto")
     private Integer idconcepto;
@@ -36,8 +39,8 @@ public class Concepto implements Serializable {
     private String concepto;
     @Column(name = "tipo")
     private Boolean tipo;
-    @Column(name = "monto_ingreso")
-    private Integer montoIngreso;
+    @Column(name = "montoingreso")
+    private Integer montoingreso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "concepto")
     private List<DetalleCaja> detalleCajaList;
 
@@ -72,12 +75,12 @@ public class Concepto implements Serializable {
         this.tipo = tipo;
     }
 
-    public Integer getMontoIngreso() {
-        return montoIngreso;
+    public Integer getMontoingreso() {
+        return montoingreso;
     }
 
-    public void setMontoIngreso(Integer montoIngreso) {
-        this.montoIngreso = montoIngreso;
+    public void setMontoingreso(Integer montoingreso) {
+        this.montoingreso = montoingreso;
     }
 
     public List<DetalleCaja> getDetalleCajaList() {

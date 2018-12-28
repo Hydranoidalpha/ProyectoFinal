@@ -7,14 +7,18 @@ package edu.snpp.proyectofinal.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,39 +35,47 @@ public class DetalleCaja implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "iddetalle_caja")
-    private Integer iddetalleCaja;
+    @Column(name = "iddetallecaja")
+    private Integer iddetallecaja;
     @Column(name = "hora")
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date hora;
-    @Column(name = "monto")
-    private Integer monto;
-    @Column(name = "tipo_movimiento")
-    private Boolean tipoMovimiento;
-    @JoinColumn(name = "alumno", referencedColumnName = "idalumno")
-    @ManyToOne(optional = false)
-    private Alumno alumno;
+    @Column(name = "salida")
+    private Integer salida;
+    @Column(name = "entrada")
+    private Integer entrada;
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Column(name = "nrorecibo")
+    private Integer nrorecibo;
+    @Column(name = "nrofac")
+    private String nrofac;
+    @Column(name = "anulado")
+    private Boolean anulado;
     @JoinColumn(name = "caja", referencedColumnName = "idcaja")
     @ManyToOne(optional = false)
     private MovimientoCaja caja;
     @JoinColumn(name = "concepto", referencedColumnName = "idconcepto")
     @ManyToOne(optional = false)
     private Concepto concepto;
+    @OneToMany(mappedBy = "detallecaja")
+    private List<MovimientoAporte> movimientoAporteList;
 
     public DetalleCaja() {
     }
 
-    public DetalleCaja(Integer iddetalleCaja) {
-        this.iddetalleCaja = iddetalleCaja;
+    public DetalleCaja(Integer iddetallecaja) {
+        this.iddetallecaja = iddetallecaja;
     }
 
-    public Integer getIddetalleCaja() {
-        return iddetalleCaja;
+    public Integer getIddetallecaja() {
+        return iddetallecaja;
     }
 
-    public void setIddetalleCaja(Integer iddetalleCaja) {
-        this.iddetalleCaja = iddetalleCaja;
+    public void setIddetallecaja(Integer iddetallecaja) {
+        this.iddetallecaja = iddetallecaja;
     }
 
     public Date getHora() {
@@ -74,28 +86,52 @@ public class DetalleCaja implements Serializable {
         this.hora = hora;
     }
 
-    public Integer getMonto() {
-        return monto;
+    public Integer getSalida() {
+        return salida;
     }
 
-    public void setMonto(Integer monto) {
-        this.monto = monto;
+    public void setSalida(Integer salida) {
+        this.salida = salida;
     }
 
-    public Boolean getTipoMovimiento() {
-        return tipoMovimiento;
+    public Integer getEntrada() {
+        return entrada;
     }
 
-    public void setTipoMovimiento(Boolean tipoMovimiento) {
-        this.tipoMovimiento = tipoMovimiento;
+    public void setEntrada(Integer entrada) {
+        this.entrada = entrada;
     }
 
-    public Alumno getAlumno() {
-        return alumno;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Integer getNrorecibo() {
+        return nrorecibo;
+    }
+
+    public void setNrorecibo(Integer nrorecibo) {
+        this.nrorecibo = nrorecibo;
+    }
+
+    public String getNrofac() {
+        return nrofac;
+    }
+
+    public void setNrofac(String nrofac) {
+        this.nrofac = nrofac;
+    }
+
+    public Boolean getAnulado() {
+        return anulado;
+    }
+
+    public void setAnulado(Boolean anulado) {
+        this.anulado = anulado;
     }
 
     public MovimientoCaja getCaja() {
@@ -114,10 +150,18 @@ public class DetalleCaja implements Serializable {
         this.concepto = concepto;
     }
 
+    public List<MovimientoAporte> getMovimientoAporteList() {
+        return movimientoAporteList;
+    }
+
+    public void setMovimientoAporteList(List<MovimientoAporte> movimientoAporteList) {
+        this.movimientoAporteList = movimientoAporteList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (iddetalleCaja != null ? iddetalleCaja.hashCode() : 0);
+        hash += (iddetallecaja != null ? iddetallecaja.hashCode() : 0);
         return hash;
     }
 
@@ -128,7 +172,7 @@ public class DetalleCaja implements Serializable {
             return false;
         }
         DetalleCaja other = (DetalleCaja) object;
-        if ((this.iddetalleCaja == null && other.iddetalleCaja != null) || (this.iddetalleCaja != null && !this.iddetalleCaja.equals(other.iddetalleCaja))) {
+        if ((this.iddetallecaja == null && other.iddetallecaja != null) || (this.iddetallecaja != null && !this.iddetallecaja.equals(other.iddetallecaja))) {
             return false;
         }
         return true;
@@ -136,7 +180,7 @@ public class DetalleCaja implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.snpp.proyectofinal.entidades.DetalleCaja[ iddetalleCaja=" + iddetalleCaja + " ]";
+        return "edu.snpp.proyectofinal.entidades.DetalleCaja[ iddetallecaja=" + iddetallecaja + " ]";
     }
     
 }
