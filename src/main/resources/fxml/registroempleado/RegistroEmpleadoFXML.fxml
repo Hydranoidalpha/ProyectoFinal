@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="624.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.registroempleado.RegistroEmpleadoFXMLController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="624.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.registroempleado.RegistroEmpleadoFXMLController">
    <children>
       <Label layoutX="139.0" layoutY="27.0" text="REGISTRO DE EMPLEADOS" textFill="#205183">
          <font>

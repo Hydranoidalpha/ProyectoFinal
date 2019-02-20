@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1020.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.cobrodeaportes.CobrodeaportesController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="1020.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.cobrodeaportes.CobrodeaportesController">
    <children>
       <Label layoutX="417.0" layoutY="39.0" text="Cobro de Aportes" textFill="#205183">
          <font>
@@ -22,10 +22,11 @@
         <columns>
           <TableColumn fx:id="colum1" prefWidth="57.000030517578125" />
             <TableColumn fx:id="Fechaven" prefWidth="265.0000305175781" text="Fecha de Vencimiento" />
-            <TableColumn fx:id="mes" prefWidth="154.0" text="Mes" />
-            <TableColumn fx:id="anho" prefWidth="143.0" text="Año" />
-            <TableColumn fx:id="montoaporte" prefWidth="183.0" text="Monto Aporte" />
-            <TableColumn fx:id="pendiente" prefWidth="144.0" text="Pendiente" />
+            <TableColumn fx:id="mes" prefWidth="120.0" text="Mes" />
+            <TableColumn fx:id="anho" prefWidth="145.0" text="Año" />
+            <TableColumn fx:id="montoaporte" prefWidth="124.0" text="Monto Aporte" />
+            <TableColumn fx:id="pendiente" prefWidth="100.0" text="Pendiente" />
+            <TableColumn fx:id="anulado" prefWidth="129.0" text="Anulado" />
         </columns>
       </TableView>
       <JFXTextField fx:id="fechacobro" editable="false" labelFloat="true" layoutX="1042.0" layoutY="157.0" prefHeight="26.0" prefWidth="119.0" promptText="Fecha de Cobro" />

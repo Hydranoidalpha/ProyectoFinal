@@ -8,6 +8,7 @@ package edu.snpp.proyectofinal.cobrodeaportes;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXPopup;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import edu.snpp.proyectofinal.MainApp;
 import edu.snpp.proyectofinal.entidades.Alumno;
@@ -89,6 +90,10 @@ public class CobrodeaportesController implements Initializable {
     private JFXTextField descripcion;
     @FXML
     private TableColumn<MovimientoAporte, Boolean> colum1;
+    @FXML
+    private TableColumn<MovimientoAporte, DetalleCaja> anulado;
+    @FXML
+    private AnchorPane pane;
 
     /**
      * Initializes the controller class.
@@ -166,6 +171,8 @@ public class CobrodeaportesController implements Initializable {
         montoaporte.setCellValueFactory(new PropertyValueFactory<>("monto"));
         pendiente.setCellValueFactory(new PropertyValueFactory<>("pendiente"));
         pendiente.setCellFactory((TableColumn<MovimientoAporte, Boolean> ma) -> new PendienteTableCell());
+        anulado.setCellValueFactory(new PropertyValueFactory<>("detallecaja"));
+        anulado.setCellFactory((TableColumn<MovimientoAporte, DetalleCaja> dc) -> new AnuladoTableCell());
 
         //para que la fecha salga en datos simples
         this.Fechaven.setCellFactory((TableColumn<MovimientoAporte, Date> ma) -> {
@@ -238,7 +245,8 @@ public class CobrodeaportesController implements Initializable {
             }
         }
         em.getTransaction().commit();
-        
+        JFXSnackbar sb= new JFXSnackbar(pane);
+        sb.show("El proceso se ha realizado con éxito", 5000);
 
     }
 

@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.anularrecibo.AnularreciboController">
+<AnchorPane id="AnchorPane" fx:id="pane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.snpp.proyectofinal.anularrecibo.AnularreciboController">
    <children>
       <Label layoutX="274.0" layoutY="35.0" text="Movimiento de Caja" textFill="#205183">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <TableView fx:id="tabla" layoutX="50.0" layoutY="93.0" prefHeight="343.0" prefWidth="1155.0">
+      <TableView fx:id="tabla" layoutX="50.0" layoutY="93.0" prefHeight="343.0" prefWidth="1155.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="80.0">
         <columns>
           <TableColumn fx:id="hora" prefWidth="138.0" text="Hora" />
             <TableColumn fx:id="entrada" prefWidth="151.0" text="Entrada" />
@@ -25,12 +25,12 @@
           <TableColumn fx:id="anulado" prefWidth="160.0" text="Anulado" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="476.0" onAction="#onActiononAnular" prefHeight="26.0" prefWidth="84.0" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Anular" wrapText="true">
+      <JFXButton buttonType="RAISED" layoutX="274.0" layoutY="476.0" onAction="#onActiononAnular" prefHeight="26.0" prefWidth="84.0" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Anular" wrapText="true" AnchorPane.bottomAnchor="20.0">
          <effect>
             <Shadow height="0.0" radius="0.0" width="0.0" />
          </effect>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="426.0" layoutY="476.0" onAction="#onActiononActualizar" prefHeight="26.0" prefWidth="133.0" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Actualizar" wrapText="true">
+      <JFXButton buttonType="RAISED" layoutX="426.0" layoutY="476.0" onAction="#onActiononActualizar" prefHeight="26.0" prefWidth="133.0" ripplerFill="#1e77b2" style="-fx-background-color: lightblue; -fx-border-radius: 100;" text="Actualizar" wrapText="true" AnchorPane.bottomAnchor="20.0">
          <effect>
             <Shadow height="0.0" radius="0.0" width="0.0" />
          </effect>

@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXPopup;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import edu.snpp.proyectofinal.entidades.Alumno;
 import edu.snpp.proyectofinal.entidades.MovimientoAporte;
@@ -38,6 +39,8 @@ import javax.persistence.TypedQuery;
  * @author fredybogado
  */
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 public class GenerarcobrodeaportesFXMLController implements Initializable {
 
@@ -51,6 +54,7 @@ public class GenerarcobrodeaportesFXMLController implements Initializable {
 
     JFXPopup popup = new JFXPopup();
     private boolean mostrar = true;
+   
 
     Alumno alu;
     @FXML
@@ -62,6 +66,8 @@ public class GenerarcobrodeaportesFXMLController implements Initializable {
     @FXML
     private JFXComboBox<Integer> hastaanho;
     private Stage s;
+    @FXML
+    private AnchorPane pane;
     public void setS(Stage s) {
         this.s = s;
     }
@@ -131,7 +137,8 @@ public class GenerarcobrodeaportesFXMLController implements Initializable {
                     
                     cVencimiento = new GregorianCalendar(anho, mes-1, 26);
                     
-                    if(!this.verificarpendiente(al, mes, anho))
+                    if(!this.verificarpendiente(al, mes, anho))// sera que esto no le esta impidiendo volver a generar el cobro de
+                     
                     {
                     MovimientoAporte ma = new MovimientoAporte();
                     ma.setAlumno(al);
@@ -143,6 +150,9 @@ public class GenerarcobrodeaportesFXMLController implements Initializable {
                     em.getTransaction().begin();
                     em.persist(ma);
                     em.getTransaction().commit();
+                    JFXSnackbar sb= new JFXSnackbar(pane);
+                    sb.show("El proceso se ha realizado con éxito", 5000);
+                    
                     }
                 }
                 cDesde.add(Calendar.MONTH, 1);

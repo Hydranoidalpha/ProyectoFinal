@@ -5,6 +5,7 @@
  */
 package edu.snpp.proyectofinal.anularrecibo;
 
+import com.jfoenix.controls.JFXSnackbar;
 import edu.snpp.proyectofinal.entidades.Concepto;
 import edu.snpp.proyectofinal.entidades.DetalleCaja;
 import edu.snpp.proyectofinal.entidades.MovimientoAporte;
@@ -20,6 +21,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -49,6 +51,8 @@ public class AnularreciboController implements Initializable {
     private TableColumn<DetalleCaja, Integer> recibo;
     @FXML
     private TableColumn<DetalleCaja, Boolean> anulado;
+    @FXML
+    private AnchorPane pane;
 
     /**
      * Initializes the controller class.
@@ -92,13 +96,15 @@ public class AnularreciboController implements Initializable {
         dc.setAnulado(true);
         
         em.getTransaction().begin();
-        em.merge(dc);
+        em.merge(dc); 
         for(MovimientoAporte ma: dc.getMovimientoAporteList()){
             ma.setPendiente(true);
             em.merge(ma);
         }
         
-    em.getTransaction().commit();
+        em.getTransaction().commit();
+        JFXSnackbar sb= new JFXSnackbar(pane);
+        sb.show("El proceso se ha realizado con éxito", 5000);
         }
         
 

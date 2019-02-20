@@ -7,6 +7,7 @@ package edu.snpp.proyectofinal.registroempleado;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import edu.snpp.proyectofinal.entidades.Cargo;
 import edu.snpp.proyectofinal.entidades.Empleado;
@@ -17,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -46,6 +48,8 @@ public class RegistroEmpleadoFXMLController implements Initializable {
     boolean emp= false;
     @FXML
     private TextField idempleado;
+    @FXML
+    private AnchorPane pane;
 
     /**
      * Initializes the controller class.
@@ -87,6 +91,8 @@ public class RegistroEmpleadoFXMLController implements Initializable {
             em.persist(e);
         }
         em.getTransaction().commit();
+        JFXSnackbar sb= new JFXSnackbar(pane);
+        sb.show("El proceso se ha realizado con éxito", 5000);
     }
     private void cargarcargo(){
         EntityManager em= emf.createEntityManager();

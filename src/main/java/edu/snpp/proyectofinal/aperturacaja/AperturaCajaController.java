@@ -6,6 +6,7 @@
 package edu.snpp.proyectofinal.aperturacaja;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import edu.snpp.proyectofinal.entidades.DetalleCaja;
 import edu.snpp.proyectofinal.entidades.MovimientoCaja;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -35,6 +37,8 @@ public class AperturaCajaController implements Initializable {
     private JFXButton AperturaCaja;
     @FXML
     private JFXTextField monto;
+    @FXML
+    private AnchorPane pane;
 
     /**
      * Initializes the controller class.
@@ -64,6 +68,10 @@ public class AperturaCajaController implements Initializable {
         em.getTransaction().begin();
         em.persist(mc);
         em.getTransaction().commit();
+        JFXSnackbar sb= new JFXSnackbar(pane);
+        sb.show("El proceso se ha realizado con éxito", 5000);
+        monto.clear();
+        monto.setEditable(false);
     }
         else{
             MovimientoCaja mc= this.cajahabilitada();
@@ -81,10 +89,12 @@ public class AperturaCajaController implements Initializable {
             mc.setTotalentrada(totalEntrada);
             mc.setTotalsalida(totalSalida);
             AperturaCaja.setText("Apertura Caja");
+            monto.setEditable(true);
             em.getTransaction().begin();
             em.merge(mc);//Movimiento Caja se tiene que actualizar, no registrar uno nuevo
             em.getTransaction().commit();
-            
+            JFXSnackbar sb= new JFXSnackbar(pane);
+            sb.show("El proceso se ha realizado con éxito", 5000);
         }
     }
     private MovimientoCaja cajahabilitada(){
